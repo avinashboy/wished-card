@@ -1,0 +1,21 @@
+@font-face {
+  font-family: adam script;
+  src: url('../fonts/Adam\ Script.ttf');
+}
+
+@font-face {
+  font-family: bellaboo;
+  src: url('../fonts/BELLABOO-Regular.ttf');
+}
+.resize {
+  width: 50%;
+  height: auto;
+}
+
+.viewImage {
+  width: 60%;
+}
+
+.showme {
+  border: 2px solid transparent;
+}
