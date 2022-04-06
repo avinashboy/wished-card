@@ -7,14 +7,14 @@
   font-family: bellaboo;
   src: url('../fonts/BELLABOO-Regular.ttf');
 }
-.resize {
+/* .resize {
   width: 50%;
   height: auto;
 }
 
 .viewImage {
   width: 60%;
-}
+} */
 
 .showme {
   border: 2px solid transparent;
