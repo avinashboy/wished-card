@@ -21,7 +21,11 @@
 <body>
   <div class="container mt-5 mb-5">
     <div id="alert"></div>
-
+    <div class="d-flex ">
+     <h3 class="p-2">Font Name</h3>
+     
+      <h2 class="showUs hideMe p-2"></h2>
+    </div>
     <div class="d-flex justify-content-between">
       <h1>Wished card</h1>
       <button class="btn btn-primary" onclick="downloadImage()">download</button>
@@ -31,7 +35,7 @@
       <div class="col-md-6 mt-2 mb-2 showme ">
         <div class="mb-3">
           <label for="nameInput" class="form-label">Name</label>
-          <input type="text" class="form-control" id="nameInput" onchange="wished()" maxlength="12" />
+          <input type="text" class="form-control" id="nameInput" maxlength="12" />
         </div>
       </div>
       <!-- font family -->
@@ -39,7 +43,10 @@
 
       </div>
     </div>
-
+<!-- button -->
+<div class="d-grid gap-2">
+  <button class="btn btn-primary" onclick="wished()" type="button">Click</button>
+</div>
     <div class="resize text-center">
       <div class="viewImage mt-4 mb-3"></div>
     </div>

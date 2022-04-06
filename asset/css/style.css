@@ -1,11 +1,15 @@
 @font-face {
   font-family: adam script;
-  src: url('../fonts/Adam\ Script.ttf');
+  src: url('../fonts/Adam-Script.ttf');
 }
 
 @font-face {
   font-family: bellaboo;
   src: url('../fonts/BELLABOO-Regular.ttf');
+}
+
+.hideMe{
+  
 }
 
 .showme {

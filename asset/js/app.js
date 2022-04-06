@@ -13,7 +13,7 @@ function fontFamilyListFun() {
   div.setAttribute("class", "mb-3");
   div.innerHTML = `
     <label for="fontFamily" class="form-label">font Family</label>
-    <select class="form-select" onchange="wished()" id="fontFamily">
+    <select class="form-select" id="fontFamily">
         ${fontFamilyList
           .map((font) => `<option value="${font}">${font}</option>`)
           .join("")}
@@ -50,8 +50,17 @@ function wished() {
   console.log("end");
 }
 
+// function showUs(){
+//   fontFamily = $("#fontFamily")
+//   const meta = data[fontFamily.val()];
+//   $(".showUs").css("font-family",meta.fontFamily)
+// }
+
 function createCanvas({ name, fontFamily }) {
   const meta = data[fontFamily];
+  $(".showUs").empty()
+  $(".showUs").css("font-family",meta.fontFamily)
+  $(".showUs").text(meta.fontFamily)
   const image = new Image();
   image.src = meta.url;
   image.crossOrigin="anonymous"
