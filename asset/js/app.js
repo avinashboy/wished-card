@@ -1,15 +1,8 @@
-// import {data} from "./data.js"
-
 const canvasElement = document.createElement("canvas");
 
 let nameInput;
 let fontFamily;
 const fontFamilyList = Object.entries(data);
-console.log("fontFamilyList:", fontFamilyList);
-
-const gg = fontFamilyList.map((font) => {console.log('font:', font[1])}).join("")
-
-console.log('gg:', gg)
 
 function fontFamilyListFun() {
   $(".fontfamilydiv").empty();
@@ -19,7 +12,7 @@ function fontFamilyListFun() {
     <label for="fontFamily" class="form-label">font Family</label>
     <select class="form-select" id="fontFamily">
         ${fontFamilyList
-          .map((font) => `<option value="${font[0]}">${font[0]}&nbsp;&nbsp;&nbsp;${font[1].fontName}</option>`)
+          .map((font) => `<option value="${font[0]}">${font[0]}</option>`)
           .join("")}
     </select>
     `;
@@ -27,11 +20,13 @@ function fontFamilyListFun() {
 }
 fontFamilyListFun();
 
-function addSpaceText({string}) {
-  console.log('string:', string)
-  const addSpace = Math.floor((12 - string.length) / 2)
-  console.log('addSpace:', addSpace)
-  return `${Array(addSpace).fill('\xa0').join('')}${string}${Array(addSpace).fill('\xa0').join('')}`
+function addSpaceText({ string }) {
+  console.log("string:", string);
+  const addSpace = Math.floor((12 - string.length) / 2);
+  console.log("addSpace:", addSpace);
+  return `${Array(addSpace).fill("\xa0").join("")}${string}${Array(addSpace)
+    .fill("\xa0")
+    .join("")}`;
 }
 
 function wished() {
@@ -41,33 +36,25 @@ function wished() {
   fontFamily = $("#fontFamily");
 
   // validate
-  //   if(validator.isEmpty(nameInput.val())) return alertUser(`Please enter a name`)
+  if (validator.isEmpty(nameInput.val()))
+    return alertUser(`Please enter a name`);
 
-   createCanvas({
-    name: addSpaceText({string: nameInput.val()}),
+  createCanvas({
+    name: addSpaceText({ string: nameInput.val() }),
     fontFamily: fontFamily.val(),
   });
 
-  // const gg = addSpaceText({string: nameInput.val()})
-  // console.log('gg:', gg)
 
-  console.log("end");
 }
-
-// function showUs(){
-//   fontFamily = $("#fontFamily")
-//   const meta = data[fontFamily.val()];
-//   $(".showUs").css("font-family",meta.fontFamily)
-// }
 
 function createCanvas({ name, fontFamily }) {
   const meta = data[fontFamily];
-  $(".showUs").empty()
-  $(".showUs").css("font-family",meta.fontFamily)
-  $(".showUs").text(meta.fontFamily)
+  $(".showUs").empty();
+  $(".showUs").css("font-family", meta.fontFamily);
+  $(".showUs").text(meta.fontFamily);
   const image = new Image();
   image.src = meta.url;
-  image.crossOrigin="anonymous"
+  image.crossOrigin = "anonymous";
   image.onload = function () {
     $(".viewImage").empty();
     canvasElement.width = this.width;
@@ -84,7 +71,6 @@ function createCanvas({ name, fontFamily }) {
     showImage.width = canvasElement.width / 1.5;
     showImage.height = canvasElement.height / 1.5;
     $(".viewImage").append(showImage);
-    // document.getElementById("gg").style.fontFamily = meta.fontFamily
   };
 }
 
