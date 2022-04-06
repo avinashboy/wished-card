@@ -4,8 +4,12 @@ const canvasElement = document.createElement("canvas");
 
 let nameInput;
 let fontFamily;
-const fontFamilyList = Object.keys(data);
+const fontFamilyList = Object.entries(data);
 console.log("fontFamilyList:", fontFamilyList);
+
+const gg = fontFamilyList.map((font) => {console.log('font:', font[1])}).join("")
+
+console.log('gg:', gg)
 
 function fontFamilyListFun() {
   $(".fontfamilydiv").empty();
@@ -15,7 +19,7 @@ function fontFamilyListFun() {
     <label for="fontFamily" class="form-label">font Family</label>
     <select class="form-select" id="fontFamily">
         ${fontFamilyList
-          .map((font) => `<option value="${font}">${font}</option>`)
+          .map((font) => `<option value="${font[0]}">${font[0]}&nbsp;&nbsp;&nbsp;${font[1].fontName}</option>`)
           .join("")}
     </select>
     `;

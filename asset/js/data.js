@@ -1,6 +1,7 @@
 const data = {
     "happy birthday (Flyer)":{
       color: "#796F45",
+      fontName: "adam script",
       fontFamily: "adam script",
       postionX: 127,
       postionY: 700,
@@ -10,6 +11,7 @@ const data = {
     },
     "happy Birthday (Poster)":{
       color: "#A67D2E",
+      fontName: "Oregano",
       fontFamily: "'Oregano', cursive",
       postionX: 110,
       postionY: 500,
@@ -19,6 +21,7 @@ const data = {
     },
     "Pastel Cute Playful Happy Birthday Flyers Landscape A4":{
       color: "#2C3037",
+      fontName: "bellaboo",
       fontFamily: "bellaboo",
       postionX: 110,
       postionY: 280,
@@ -28,6 +31,7 @@ const data = {
     },
     "happy birthday instagram post":{
       color: "#87879E",
+      fontName: "Yeseva One",
       fontFamily: "'Yeseva One', cursive",
       postionX: 120,
       postionY: 450,
@@ -37,6 +41,7 @@ const data = {
     },
     "Yellow Border Happy Birthday Poster":{
       color: "#000000",
+      fontName: "Mr Dafoe",
       fontFamily: "'Mr Dafoe', cursive",
       postionX: 93,
       postionY: 350,
