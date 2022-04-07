@@ -8,6 +8,12 @@
   src: url('../fonts/BELLABOO-Regular.ttf');
 }
 
+.body{
+  font-family: adam script;
+  font-family: bellaboo;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 
 .showme {
   border: 2px solid transparent;
