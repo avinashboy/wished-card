@@ -3,6 +3,23 @@ const canvasElement = document.createElement("canvas");
 let nameInput;
 let fontFamily;
 const fontFamilyList = Object.entries(data);
+console.log('fontFamilyList:', fontFamilyList)
+
+async function loadFonts({fontName, fontUrl}) {
+  console.log('fontUrl:', fontUrl)
+  console.log('fontName:', fontName)
+  const font = new FontFace(fontName, `url(${fontUrl})`);
+  // await font.load();
+  // document.fonts.add(font);
+  font.load()
+  .then(function (loaded_face) {
+    console.log("loaded_face:", loaded_face);
+    document.fonts.add(loaded_face);
+  })
+  .catch(function (error) {
+    console.log("error:", error);
+  })
+}
 
 function fontFamilyListFun() {
   $(".fontfamilydiv").empty();
@@ -12,8 +29,12 @@ function fontFamilyListFun() {
     <label for="fontFamily" class="form-label">font Family</label>
     <select class="form-select" id="fontFamily">
         ${fontFamilyList
-          .map((font) => `<option value="${font[0]}">${font[0]}</option>`)
-          .join("")}
+          .map((font) => {
+            loadFonts({fontName:font[1].fontName, fontUrl:font[1].fontUrl})
+            return `<option value="${font[0]}">${font[0]}&nbsp;&nbsp;&nbsp;${font[1].fontName}</option>`
+          })
+          .join("")
+        }
     </select>
     `;
   $(".fontfamilydiv").append(div);
