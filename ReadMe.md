@@ -1,4 +1,4 @@
-### [Site live!]()
+### [Site live!](https://avinashboy.github.io/wished-card/)
 
 ### Wished card
 - upload your photo to [imgbb](https://imgbb.com/)
