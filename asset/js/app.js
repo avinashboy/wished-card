@@ -4,14 +4,15 @@ let nameInput;
 let fontFamily;
 const fontFamilyList = Object.entries(data);
 
-
-async function loadFonts({fontName, fontUrl}) {
+// loading external fonts
+async function loadFonts({ fontName, fontUrl }) {
   const font = new FontFace(fontName, `url(${fontUrl})`);
   await font.load();
   document.fonts.add(font);
-  return
+  return;
 }
 
+// list of font families
 function fontFamilyListFun() {
   $(".fontfamilydiv").empty();
   const div = document.createElement("div");
@@ -21,17 +22,19 @@ function fontFamilyListFun() {
     <select class="form-select" id="fontFamily">
         ${fontFamilyList
           .map((font) => {
-            loadFonts({fontName:font[1].fontName, fontUrl:font[1].fontUrl})
-            return `<option value="${font[0]}">${font[0]}</option>`
+            loadFonts({ fontName: font[1].fontName, fontUrl: font[1].fontUrl });
+            return `<option value="${font[0]}">${font[0]}</option>`;
           })
-          .join("")
-        }
+          .join("")}
     </select>
     `;
   $(".fontfamilydiv").append(div);
 }
+
+// function calling
 fontFamilyListFun();
 
+// add space between words
 function addSpaceText({ string }) {
   const addSpace = Math.floor((12 - string.length) / 2);
   return `${Array(addSpace).fill("\xa0").join("")}${string}${Array(addSpace)
@@ -39,6 +42,7 @@ function addSpaceText({ string }) {
     .join("")}`;
 }
 
+// initializing the app
 function wished() {
   // getting the data
   nameInput = $("#nameInput");
@@ -48,19 +52,19 @@ function wished() {
   if (validator.isEmpty(nameInput.val()))
     return alertUser(`Please enter a name`);
 
+  // function calling
   createCanvas({
     name: addSpaceText({ string: nameInput.val() }),
     fontFamily: fontFamily.val(),
   });
-
-
 }
 
+// create canvas with text and image background
 function createCanvas({ name, fontFamily }) {
   const meta = data[fontFamily];
   $(".showUs").empty();
   $(".showUs").css("font-family", meta.fontFamily);
-  $(".showUs").text(meta.fontFamily);
+  $(".showUs").text(meta.fontName);
   const image = new Image();
   image.src = meta.url;
   image.crossOrigin = "anonymous";
@@ -82,6 +86,7 @@ function createCanvas({ name, fontFamily }) {
   };
 }
 
+// alert user
 function alertUser(message) {
   const text = `
       <div class="alert alert-danger" role="alert">
@@ -95,6 +100,7 @@ function alertUser(message) {
   }, 3000);
 }
 
+// download image
 function downloadImage(filename = "image.png") {
   var element = document.createElement("a");
   element.href = canvasElement.toDataURL("image/png");
