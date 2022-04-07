@@ -3,22 +3,13 @@ const canvasElement = document.createElement("canvas");
 let nameInput;
 let fontFamily;
 const fontFamilyList = Object.entries(data);
-console.log('fontFamilyList:', fontFamilyList)
+
 
 async function loadFonts({fontName, fontUrl}) {
-  console.log('fontUrl:', fontUrl)
-  console.log('fontName:', fontName)
   const font = new FontFace(fontName, `url(${fontUrl})`);
-  // await font.load();
-  // document.fonts.add(font);
-  font.load()
-  .then(function (loaded_face) {
-    console.log("loaded_face:", loaded_face);
-    document.fonts.add(loaded_face);
-  })
-  .catch(function (error) {
-    console.log("error:", error);
-  })
+  await font.load();
+  document.fonts.add(font);
+  return
 }
 
 function fontFamilyListFun() {
@@ -31,7 +22,7 @@ function fontFamilyListFun() {
         ${fontFamilyList
           .map((font) => {
             loadFonts({fontName:font[1].fontName, fontUrl:font[1].fontUrl})
-            return `<option value="${font[0]}">${font[0]}&nbsp;&nbsp;&nbsp;${font[1].fontName}</option>`
+            return `<option value="${font[0]}">${font[0]}</option>`
           })
           .join("")
         }
@@ -42,9 +33,7 @@ function fontFamilyListFun() {
 fontFamilyListFun();
 
 function addSpaceText({ string }) {
-  console.log("string:", string);
   const addSpace = Math.floor((12 - string.length) / 2);
-  console.log("addSpace:", addSpace);
   return `${Array(addSpace).fill("\xa0").join("")}${string}${Array(addSpace)
     .fill("\xa0")
     .join("")}`;
@@ -52,7 +41,6 @@ function addSpaceText({ string }) {
 
 function wished() {
   // getting the data
-
   nameInput = $("#nameInput");
   fontFamily = $("#fontFamily");
 
@@ -83,7 +71,6 @@ function createCanvas({ name, fontFamily }) {
     const ctx = canvasElement.getContext("2d");
     ctx.drawImage(image, 0, 0, canvasElement.width, canvasElement.height);
     const text = `${meta.fontWeight} ${meta.fontSize}px ${meta.fontFamily}`;
-    console.log("text:", text);
     ctx.fillStyle = `${meta.color}`;
     ctx.font = text;
     ctx.fillText(name, meta.postionX, meta.postionY);
@@ -96,7 +83,6 @@ function createCanvas({ name, fontFamily }) {
 }
 
 function alertUser(message) {
-  console.log("message:", message);
   const text = `
       <div class="alert alert-danger" role="alert">
       ${message}
